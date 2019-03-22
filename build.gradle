@@ -26,4 +26,6 @@ repositories {
 dependencies {
 	implementation 'org.jetbrains.kotlin:kotlin-stdlib'
 	testImplementation 'junit:junit:4.12'
+	compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
+	compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.14.0'
 }
