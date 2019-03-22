@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 abstract class ElementFinder constructor(val identifier: String, val driver: WebDriver) : Resultable<WebElement> {
   protected abstract fun By(identifier :String): By
-  override fun Result(): WebElement {
+  override fun result(): WebElement {
     return driver.findElement(By(this.identifier));
   }
 }

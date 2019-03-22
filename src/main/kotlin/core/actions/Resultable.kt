@@ -1,7 +1,7 @@
 package kotlin.core.actions
 
 interface Resultable<TResult> {
-  fun Result(): TResult
+  fun result(): TResult
 }
 
 abstract class Result<TResult> {
