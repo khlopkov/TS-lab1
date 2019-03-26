@@ -3,8 +3,10 @@ import core.shoulds.ElementShould
 import core.shoulds.ElementShouldExist
 import core.shoulds.TitleShould
 import core.test.TestCase
+import presets.DropdownListIdentifier
 import presets.NavBarLink
 import presets.NavLinkClickPreset
+import test_factories.ClickDropdownTestCaseFactory
 
 fun main(args: Array<String>) {
     // testNavbarStaffLink()
@@ -14,12 +16,14 @@ fun main(args: Array<String>) {
     // testNavbarFilesLink()
     // testNavbarMediaLink()
     // testNavbarInformationLink()
-    testNavbarPartnersLink()
+    //testNavbarPartnersLink()
+    // testDropdownStudentClubs()
+    testDropdownFaculties()
 }
 
-private val PageHeaderXPath: String = "//h2[contains(@class, 'page-header')]"
-private val PageH4SubheaderXPath: String = "//h4[contains(@class, 'page-sub-header')]"
-private val PageH3SubheaderXPath: String = "//h3[contains(@class, 'page-sub-header')]"
+private const val PageHeaderXPath: String = "//h2[contains(@class, 'page-header')]"
+private const val PageH4SubheaderXPath: String = "//h4[contains(@class, 'page-sub-header')]"
+private const val PageH3SubheaderXPath: String = "//h3[contains(@class, 'page-sub-header')]"
 
 fun testNavbarStaffLink() {
     val testCase = TestCase("testStaffLink", NavLinkClickPreset(NavBarLink.Staff))
@@ -165,5 +169,17 @@ fun testNavbarPartnersLink() {
     ) { it.text.contains("Партнёры", true) })
 
     val message = testCase.runTest().message
+    println(message)
+}
+
+fun testDropdownStudentClubs() {
+    val testCaseFactory = ClickDropdownTestCaseFactory(DropdownListIdentifier.StudentsClubList)
+    val message = testCaseFactory.testCase.runTest().message
+    println(message)
+}
+
+fun testDropdownFaculties() {
+    val testCaseFactory = ClickDropdownTestCaseFactory(DropdownListIdentifier.FacultiesList)
+    val message = testCaseFactory.testCase.runTest().message
     println(message)
 }

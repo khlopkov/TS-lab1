@@ -26,7 +26,7 @@ class TestCase : TestPreset, Testable {
 
         for(preaction in preactions) {
             try {
-                preaction.Do(driver)
+                preaction.`do`(driver)
             } catch (e: TestCaseException) {
                 closeDriver(driver)
                 return TestResult(TestStatus.Failed, preaction.description, e.failCause)
@@ -34,7 +34,7 @@ class TestCase : TestPreset, Testable {
         }
         for(action in actions) {
             try{
-                action.Do(driver)
+                action.`do`(driver)
             }
             catch (e: TestCaseException) {
                 closeDriver(driver)
@@ -57,7 +57,7 @@ class TestCase : TestPreset, Testable {
 
         for(afterAction in afterTestActions) {
             try{
-                afterAction.Do(driver)
+                afterAction.`do`(driver)
             }
             catch (e: TestCaseException) {
                 closeDriver(driver)

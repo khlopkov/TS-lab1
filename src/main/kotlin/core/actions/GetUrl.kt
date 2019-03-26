@@ -6,7 +6,7 @@ class GetUrl constructor(private val url: String) : Actionable {
     override val description: String
         get() = "Get page with url: ${this.url}"
 
-    override fun Do(driver: WebDriver) {
+    override fun `do`(driver: WebDriver) {
         driver.get(this.url)
     }
 }

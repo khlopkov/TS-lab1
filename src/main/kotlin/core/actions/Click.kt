@@ -11,7 +11,7 @@ class Click constructor(private val query: ElementQuery) : Actionable {
   override val description: String
     get() = "click on element with ${this.query.identifierType} \"${this.query.identifier}\""
 
-  override fun Do(driver: WebDriver) {
+  override fun `do`(driver: WebDriver) {
     val element: WebElement = this.elementFinder.findElement(driver)
     element.click()
   }
