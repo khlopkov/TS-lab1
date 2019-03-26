@@ -74,6 +74,9 @@ public class TestCase(val name: String) : TestPreset(), Testable {
             }
         }
 
+        driver.close()
+        driver.quit()
+
         return TestResult(TestStatus.Passed, this.name)
     }
 }
