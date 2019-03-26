@@ -7,6 +7,8 @@ import presets.DropdownListIdentifier
 import presets.NavBarLink
 import presets.NavLinkClickPreset
 import test_factories.ClickDropdownTestCaseFactory
+import test_factories.StudsDropdownLink
+import test_factories.StudsDropdownLinksClickTestCaseFactory
 
 fun main(args: Array<String>) {
     // testNavbarStaffLink()
@@ -16,9 +18,15 @@ fun main(args: Array<String>) {
     // testNavbarFilesLink()
     // testNavbarMediaLink()
     // testNavbarInformationLink()
-    //testNavbarPartnersLink()
+    // testNavbarPartnersLink()
     // testDropdownStudentClubs()
-    testDropdownFaculties()
+    // testDropdownFaculties()
+    // testStudsDropdownAboutLink()
+    // testStudsDropdownCreateClubLink()
+    // testStudsDropdownMentoringLink()
+    testStudsDropdownFilesLink()
+    testStudsDropdownForLeaderLink()
+    testStudsDropdownClubsLink()
 }
 
 private const val PageHeaderXPath: String = "//h2[contains(@class, 'page-header')]"
@@ -182,4 +190,34 @@ fun testDropdownFaculties() {
     val testCaseFactory = ClickDropdownTestCaseFactory(DropdownListIdentifier.FacultiesList)
     val message = testCaseFactory.testCase.runTest().message
     println(message)
+}
+
+fun testStudsDropdownAboutLink() {
+    val testFactory = StudsDropdownLinksClickTestCaseFactory(StudsDropdownLink.AboutClubSystem)
+    println(testFactory.testCase.runTest().message)
+}
+
+fun testStudsDropdownCreateClubLink() {
+    val testFactory = StudsDropdownLinksClickTestCaseFactory(StudsDropdownLink.ClubCreation)
+    println(testFactory.testCase.runTest().message)
+}
+
+fun testStudsDropdownMentoringLink() {
+    val testFactory = StudsDropdownLinksClickTestCaseFactory(StudsDropdownLink.ClubMentoring)
+    println(testFactory.testCase.runTest().message)
+}
+
+fun testStudsDropdownFilesLink() {
+    val testFactory = StudsDropdownLinksClickTestCaseFactory(StudsDropdownLink.FilesAndInstructions)
+    println(testFactory.testCase.runTest().message)
+}
+
+fun testStudsDropdownForLeaderLink() {
+    val testFactory = StudsDropdownLinksClickTestCaseFactory(StudsDropdownLink.ForClubLeader)
+    println(testFactory.testCase.runTest().message)
+}
+
+fun testStudsDropdownClubsLink() {
+    val testFactory = StudsDropdownLinksClickTestCaseFactory(StudsDropdownLink.Clubs)
+    println(testFactory.testCase.runTest().message)
 }
