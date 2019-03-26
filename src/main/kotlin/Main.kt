@@ -4,6 +4,7 @@ import core.actions.GetUrl
 import core.elements.ElementByXpath
 import core.shoulds.ElementShould
 import core.shoulds.ElementShouldExist
+import core.shoulds.TitleShould
 import core.test.TestCase
 import presets.NavBarLink
 import presets.NavLinkClickPreset
@@ -13,10 +14,14 @@ fun main(args: Array<String>) {
 }
 
 private val PageHeaderXPath: String = "//h2[contains(@class, 'page-header')]"
-private val PageSubHeaderXPath: String = "//h2[contains(@class, 'page-sub-header')]"
+private val PageSubHeaderXPath: String = "//h4[contains(@class, 'page-sub-header')]"
 
 fun testNabarStaffLink() {
-    val testCase = TestCase("test1", NavLinkClickPreset(NavBarLink.Staff))
+    val testCase = TestCase("testStaffLink", NavLinkClickPreset(NavBarLink.Staff))
+
+    testCase.addExpectation(TitleShould(
+            "Состав Совет обучающихся Совет обучающихся университета ИТМО"
+    ) {it == "Состав Совет обучающихся Совет обучающихся университета ИТМО"})
 
     testCase.addExpectation(ElementShouldExist(ElementByXpath(PageHeaderXPath)))
     testCase.addExpectation(ElementShould(
@@ -24,11 +29,11 @@ fun testNabarStaffLink() {
             ElementByXpath(PageHeaderXPath)
     ) { it.text == "Состав" })
 
-    testCase.addExpectation(ElementShouldExist(ElementByXpath(PageHeaderXPath)))
+    testCase.addExpectation(ElementShouldExist(ElementByXpath(PageSubHeaderXPath)))
     testCase.addExpectation(ElementShould(
-            "содержать совет обучающихся",
+            "содержать Совет обучающихся",
             ElementByXpath(PageSubHeaderXPath)
-    ) { it.text == "совет обучающихся" })
+    ) { it.text.contains("совет обучающихся", true) })
 
     val message = testCase.runTest().message
     println(message)
