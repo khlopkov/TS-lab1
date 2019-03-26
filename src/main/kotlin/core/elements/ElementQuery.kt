@@ -18,6 +18,6 @@ public class ElementByClass constructor(val className: String) : ElementQuery(cl
 
 public class ElementByXpath constructor(val xpath: String) : ElementQuery(xpath, By.xpath(xpath)) {
     override val identifierType: String
-        get() = "className"
+        get() = "xpath"
 }
 
