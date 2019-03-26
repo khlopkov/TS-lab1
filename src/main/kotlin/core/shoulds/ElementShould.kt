@@ -2,7 +2,6 @@ package core.shoulds
 
 import core.elements.ElementFinder
 import core.elements.ElementQuery
-import core.exceptions.ElementNotFoundException
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 

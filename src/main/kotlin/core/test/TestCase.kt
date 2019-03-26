@@ -12,6 +12,11 @@ class TestCase : TestPreset, Testable {
     constructor (name: String) : super() { this.name = name }
     constructor(name: String, basedOn: TestPreseted) : super(basedOn) { this.name = name }
 
+    private fun closeDriver(driver: WebDriver) {
+        driver.close()
+        driver.quit()
+    }
+
     override fun addExpectation(should: Shouldable) {
         this.expectationsArr.add(should)
     }
@@ -23,23 +28,16 @@ class TestCase : TestPreset, Testable {
             try {
                 preaction.Do(driver)
             } catch (e: TestCaseException) {
+                closeDriver(driver)
                 return TestResult(TestStatus.Failed, preaction.description, e.failCause)
             }
         }
-          for(action in actionsArr) {
-            try{
-                action.Do(driver)
-            }
-            catch (e: TestCaseException) {
-                return TestResult(TestStatus.Failed, action.description, e.failCause)
-            }
-        }
-
         for(action in actions) {
             try{
                 action.Do(driver)
             }
             catch (e: TestCaseException) {
+                closeDriver(driver)
                 return TestResult(TestStatus.Failed, action.description, e.failCause)
             }
         }
@@ -47,10 +45,12 @@ class TestCase : TestPreset, Testable {
         for(expectation in this.expectationsArr) {
             try{
                 if (!expectation.should(driver)) {
+                    closeDriver(driver)
                     return TestResult(TestStatus.Failed, expectation.description, "false")
                 }
             }
             catch (e: TestCaseException) {
+                closeDriver(driver)
                 return TestResult(TestStatus.Failed, expectation.description, e.failCause)
             }
         }
@@ -60,13 +60,12 @@ class TestCase : TestPreset, Testable {
                 afterAction.Do(driver)
             }
             catch (e: TestCaseException) {
+                closeDriver(driver)
                 return TestResult(TestStatus.Failed, afterAction.description, e.failCause)
             }
         }
 
-        driver.close()
-        driver.quit()
-
+        closeDriver(driver)
         return TestResult(TestStatus.Passed, this.name)
     }
 }

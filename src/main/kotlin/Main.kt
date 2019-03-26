@@ -21,7 +21,7 @@ fun testNabarStaffLink() {
 
     testCase.addExpectation(TitleShould(
             "Состав Совет обучающихся Совет обучающихся университета ИТМО"
-    ) {it == "Состав Совет обучающихся Совет обучающихся университета ИТМО"})
+    ) { it.contains("Состав Совет обучающихся Совет обучающихся университета ИТМО", true) })
 
     testCase.addExpectation(ElementShouldExist(ElementByXpath(PageHeaderXPath)))
     testCase.addExpectation(ElementShould(
@@ -33,7 +33,7 @@ fun testNabarStaffLink() {
     testCase.addExpectation(ElementShould(
             "содержать Совет обучающихся",
             ElementByXpath(PageSubHeaderXPath)
-    ) { it.text.contains("совет обучающихся", true) })
+    ) { it.text.contains("Совет обучающихся", true) })
 
     val message = testCase.runTest().message
     println(message)
