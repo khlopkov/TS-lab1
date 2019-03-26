@@ -5,22 +5,11 @@ import core.shoulds.Shouldable
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 
-public class TestCase(val name: String) : TestPreset(), Testable {
+public class TestCase : TestPreset, Testable {
     private val expectationsArr = ArrayList<Shouldable>()
-
-    public constructor(name: String, basedOn: TestPreseted) : this (name) {
-        for(preaction in basedOn.preactions) {
-            this.preactionsArr.add(preaction)
-        }
-
-        for(action in basedOn.actions) {
-            this.actionsArr.add(action)
-        }
-
-        for(afterTestAction in basedOn.afterTestActions) {
-            this.afterTestActionsArr.add(afterTestAction)
-        }
-    }
+    val name: String
+    public constructor (name: String) : super() { this.name = name }
+    public constructor(name: String, basedOn: TestPreseted) : super(basedOn) { this.name = name }
 
     override fun addExpectation(should: Shouldable) {
         this.expectationsArr.add(should)

@@ -1,14 +1,26 @@
 package core.test
 
 import core.actions.Actionable
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeDriver
 import java.util.*
 
-public open class TestPreset : TestPresetable, TestPreseted {
+public open class TestPreset() : TestPresetable, TestPreseted {
     protected val preactionsArr = ArrayList<Actionable>()
     protected val actionsArr = ArrayList<Actionable>()
     protected val afterTestActionsArr = ArrayList<Actionable>()
+
+    public constructor(basedOn: TestPreseted) : this (){
+        for(preaction in basedOn.preactions) {
+            this.preactionsArr.add(preaction)
+        }
+
+        for(action in basedOn.actions) {
+            this.actionsArr.add(action)
+        }
+
+        for(afterTestAction in basedOn.afterTestActions) {
+            this.afterTestActionsArr.add(afterTestAction)
+        }
+    }
 
     override val preactions: Iterable<Actionable>
         get() = this.preactionsArr
