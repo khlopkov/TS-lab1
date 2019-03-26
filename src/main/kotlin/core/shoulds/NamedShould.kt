@@ -2,11 +2,11 @@ package core.shoulds
 
 import org.openqa.selenium.WebDriver
 
-public interface NamedShouldable : Shouldable {
-    public val name: String
+interface NamedShouldable : Shouldable {
+    val name: String
 }
 
-public class NamedShould(override val name: String, private val should: Shouldable) : NamedShouldable {
+class NamedShould(override val name: String, private val should: Shouldable) : NamedShouldable, AbstractShould() {
     override val description: String
         get() = this.should.description
 

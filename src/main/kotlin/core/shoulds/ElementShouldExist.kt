@@ -2,8 +2,8 @@ package core.shoulds
 
 import core.elements.ElementQuery
 
-public class ElementShouldExist(val query: ElementQuery) : ElementShould (
+class ElementShouldExist(query: ElementQuery) : ElementShould (
         "exist",
         query,
-        { it != null }
-    ) { }
+        { true }
+    )

@@ -2,7 +2,7 @@ package core.shoulds
 
 import org.openqa.selenium.WebDriver
 
-public class TitleShould(private val what: String, private val titleShould: (String) -> Boolean) : Shouldable {
+class TitleShould(private val what: String, private val titleShould: (String) -> Boolean) : AbstractShould() {
     override val description: String
         get() = "Title should be ${this.what}"
 
