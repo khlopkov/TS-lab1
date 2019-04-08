@@ -1,9 +1,10 @@
-interface Shouldable {
-  fun check(): Boolean
-}
+package core.shoulds
 
-abstract class Should constructor(val boolAction: Unit -> Boolean) : Shouldable {
-  override fun check(): Boolean {
-    return this.boolAction();
-  }
+import core.actions.Actionable
+import org.openqa.selenium.WebDriver
+
+interface Shouldable {
+    fun then(action: Actionable): Shouldable
+    val description: String
+    fun should(driver: WebDriver): Boolean
 }

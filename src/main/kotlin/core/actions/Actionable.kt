@@ -1,5 +1,8 @@
-package kotlin.core.actions;
+package core.actions
+
+import org.openqa.selenium.WebDriver
 
 interface Actionable {
-  fun Do()
+  val description: String
+  fun `do`(driver: WebDriver)
 }
