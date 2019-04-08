@@ -26,20 +26,15 @@ class  StudsDropdownLinksClickTestCaseCreator(linkIdentifier: StudsDropdownLink)
     private val url = "https://student.ifmo.ru/pages/${linkIdentifier.pageUrlIndex}/"
     private var sidebarLinkQuery = ElementByXpath("/html/body/div[1]/div/div[2]/ul/li[${linkIdentifier.index}]/a")
 
-    override val testCase: Testable
+    override val testCase: TestCase = TestCase(
+            "Нажатие на ссылку выпадющего списка \"студеческие клубы\" ${linkIdentifier.title}",
+            DropdownPreset(DropdownListIdentifier.StudentsClubList)
+    )
 
     init {
-        this.testCase = TestCase(
-                "Нажатие на ссылку выпадющего списка \"студеческие клубы\" ${linkIdentifier.title}",
-                DropdownPreset(DropdownListIdentifier.StudentsClubList)
-        )
-    }
-
-    init {
-        val testCase = this.testCase as TestCase
         testCase.addAction(Click(this.linkQuery))
-
     }
+
     init {
         val urlShould = UrlShould(
                 "be equal $url"

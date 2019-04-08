@@ -6,9 +6,7 @@ import core.test.TestCase
 import presets.DropdownListIdentifier
 import presets.NavBarLink
 import presets.NavLinkClickPreset
-import test_creators.ClickDropdownTestCaseCreator
-import test_creators.StudsDropdownLink
-import test_creators.StudsDropdownLinksClickTestCaseCreator
+import test_creators.*
 
 fun main(args: Array<String>) {
     // testNavbarStaffLink()
@@ -24,9 +22,11 @@ fun main(args: Array<String>) {
     // testStudsDropdownAboutLink()
     // testStudsDropdownCreateClubLink()
     // testStudsDropdownMentoringLink()
-    testStudsDropdownFilesLink()
-    testStudsDropdownForLeaderLink()
-    testStudsDropdownClubsLink()
+    // testStudsDropdownFilesLink()
+    // testStudsDropdownForLeaderLink()
+    // testStudsDropdownClubsLink()
+    testFacultiesDropdownIktLink()
+    testFacultiesDropdownFtmiLink()
 }
 
 private const val PageHeaderXPath: String = "//h2[contains(@class, 'page-header')]"
@@ -220,4 +220,18 @@ fun testStudsDropdownForLeaderLink() {
 fun testStudsDropdownClubsLink() {
     val testFactory = StudsDropdownLinksClickTestCaseCreator(StudsDropdownLink.Clubs)
     println(testFactory.testCase.runTest().message)
+}
+
+fun testFacultiesDropdownIktLink() {
+    val testCaseCreator: TestCaseCreator
+    testCaseCreator = FacultiesDropdownLinksTestCaseCreator(FacultiesDropdownLink.IKT)
+
+    println(testCaseCreator.testCase.runTest().message)
+}
+
+fun testFacultiesDropdownFtmiLink() {
+    val testCaseCreator: TestCaseCreator
+    testCaseCreator = FacultiesDropdownLinksTestCaseCreator(FacultiesDropdownLink.FTMI)
+
+    println(testCaseCreator.testCase.runTest().message)
 }
