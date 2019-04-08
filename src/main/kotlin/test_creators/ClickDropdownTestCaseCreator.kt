@@ -1,4 +1,4 @@
-package test_factories
+package test_creators
 
 import core.actions.Click
 import core.elements.ElementByXpath
@@ -10,9 +10,9 @@ import core.test.Testable
 import presets.DropdownListIdentifier
 import presets.DropdownPreset
 
-class ClickDropdownTestCaseFactory(listIdentifier: DropdownListIdentifier) {
+class ClickDropdownTestCaseCreator(listIdentifier: DropdownListIdentifier) : TestCaseCreator{
     private val dropdownListLinkXPath: String = "//*[@id='${listIdentifier.id}']"
-    val testCase: Testable
+    override val testCase: Testable
     private val dropdownMenuXPath: String = "/html/body/header/div/div/div[2]/div/div[${listIdentifier.index}]/div"
 
     init {

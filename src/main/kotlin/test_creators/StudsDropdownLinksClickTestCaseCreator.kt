@@ -1,4 +1,4 @@
-package test_factories
+package test_creators
 
 import core.actions.Click
 import core.elements.ElementByXpath
@@ -20,13 +20,13 @@ enum class StudsDropdownLink(val index: Int, val title: String, val pageUrlIndex
     Clubs(6, "Клубы", 84)
 }
 
-class  StudsDropdownLinksClickTestCaseFactory(linkIdentifier: StudsDropdownLink) {
+class  StudsDropdownLinksClickTestCaseCreator(linkIdentifier: StudsDropdownLink) : TestCaseCreator {
     private val headerQuery = ElementByXpath("/html/body/div[1]/div/div[1]/h2")
     private val linkQuery = ElementByXpath("/html/body/header/div[1]/div/div[2]/div/div[1]/div/div/div/div/ul/h4[${linkIdentifier.index}]/a")
     private val url = "https://student.ifmo.ru/pages/${linkIdentifier.pageUrlIndex}/"
     private var sidebarLinkQuery = ElementByXpath("/html/body/div[1]/div/div[2]/ul/li[${linkIdentifier.index}]/a")
 
-    val testCase: Testable
+    override val testCase: Testable
 
     init {
         this.testCase = TestCase(
