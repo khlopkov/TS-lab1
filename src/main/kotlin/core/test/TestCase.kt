@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeDriver
 
 class TestCase : TestPreset, Testable {
     private val expectationsArr = ArrayList<Shouldable>()
+    val expectaions: Iterable<Shouldable>
+            get() = this.expectationsArr;
     val name: String
 
     constructor (name: String) : super() { this.name = name }
