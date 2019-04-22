@@ -53,11 +53,12 @@ class FacultiesDropdownLinksTestCaseCreator(dropdownLink: FacultiesDropdownLink)
         val staffLinkText = "Состав"
 
         this.testCase.addExpectation(ElementShouldExist(staffLink))
-        this.testCase.addExpectation(ElementShouldContainText(staffLink, staffLinkText)
-                .then(Click(staffLink)))
+        // TODO: move to another test case
+        // this.testCase.addExpectation(ElementShouldContainText(staffLink, staffLinkText)
+        //         .then(Click(staffLink)))
 
-        this.testCase.addExpectation(ElementShouldExist(this.pageHeader))
-        this.testCase.addExpectation(ElementShouldContainText(this.pageHeader, staffLinkText))
+        // this.testCase.addExpectation(ElementShouldExist(this.pageHeader))
+        // this.testCase.addExpectation(ElementShouldContainText(this.pageHeader, staffLinkText))
     }
 
     init {
@@ -66,11 +67,12 @@ class FacultiesDropdownLinksTestCaseCreator(dropdownLink: FacultiesDropdownLink)
             val filesLinkText = "Файлы"
 
             this.testCase.addExpectation(ElementShouldExist(filesLink))
-            this.testCase.addExpectation(ElementShouldContainText(filesLink, filesLinkText)
-                    .then(Click(filesLink)))
+            // TODO: move to another test case
+            // this.testCase.addExpectation(ElementShouldContainText(filesLink, filesLinkText)
+            //         .then(Click(filesLink)))
 
-            this.testCase.addExpectation(ElementShouldExist(this.pageHeader))
-            this.testCase.addExpectation(ElementShouldContainText(this.pageHeader, filesLinkText))
+            // this.testCase.addExpectation(ElementShouldExist(this.pageHeader))
+            // this.testCase.addExpectation(ElementShouldContainText(this.pageHeader, filesLinkText))
         }
     }
 }

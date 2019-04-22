@@ -6,7 +6,7 @@ interface NamedShouldable : Shouldable {
     val name: String
 }
 
-class NamedShould(override val name: String, private val should: Shouldable) : NamedShouldable, AbstractShould() {
+class NamedShould(override val name: String, private val should: Shouldable) : NamedShouldable, Shouldable {
     override val description: String
         get() = this.should.description
 

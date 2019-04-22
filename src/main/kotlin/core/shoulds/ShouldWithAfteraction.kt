@@ -3,7 +3,7 @@ package core.shoulds
 import core.actions.Actionable
 import org.openqa.selenium.WebDriver
 
-class ShouldWithAfteraction(private val expectation: Shouldable, private val afteraction: Actionable) : AbstractShould() {
+class ShouldWithAfteraction(private val expectation: Shouldable, private val afteraction: Actionable) : Shouldable {
     override val description: String
         get() = this.expectation.description
 
