@@ -3,7 +3,7 @@ package core.shoulds
 import core.actions.Actionable
 import org.openqa.selenium.WebDriver
 
-class ActionShould(private val what: String, private vararg val actions: Actionable, private val expectation: Shouldable) : Shouldable {
+class ActionShould(private val what: String, private vararg val actions: Actionable, private val expectation: Expectable) : Expectable {
     override val description: String
         get() = "Should ${this.what}"
 

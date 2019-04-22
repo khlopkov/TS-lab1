@@ -2,7 +2,7 @@ package core.shoulds
 
 import org.openqa.selenium.WebDriver
 
-class UrlShould(private val what: String, private val urlShould: (String) -> Boolean) : Shouldable {
+class UrlShould(private val what: String, private val urlShould: (String) -> Boolean) : Expectable {
     override val description: String
         get() = "Url should be ${this.what}"
 

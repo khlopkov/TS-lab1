@@ -1,14 +1,14 @@
 package core.test
 
 import core.exceptions.TestCaseException
-import core.shoulds.Shouldable
+import core.shoulds.Expectable
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 
 class TestCase : TestPreset, Testable {
-    private val expectationsArr = ArrayList<Shouldable>()
-    val expectaions: Iterable<Shouldable>
-            get() = this.expectationsArr;
+    private val expectationsArr = ArrayList<Expectable>()
+    val expectaions: Iterable<Expectable>
+            get() = this.expectationsArr
     val name: String
 
     constructor (name: String) : super() { this.name = name }
@@ -19,7 +19,7 @@ class TestCase : TestPreset, Testable {
         driver.quit()
     }
 
-    override fun addExpectation(should: Shouldable) {
+    override fun addExpectation(should: Expectable) {
         this.expectationsArr.add(should)
     }
 

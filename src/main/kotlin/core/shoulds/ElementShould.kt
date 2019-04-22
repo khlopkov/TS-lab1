@@ -9,7 +9,7 @@ open class ElementShould(
         protected val what: String,
         private val query: ElementQuery,
         private val elementShould: (WebElement) -> Boolean
-) : Shouldable {
+) : Expectable {
     override val description: String
         get() = "Element with ${this.query.identifierType} \"${this.query.identifier}\" should ${this.what}"
 

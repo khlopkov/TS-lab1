@@ -1,8 +1,8 @@
 package core.test
 
-import core.shoulds.Shouldable
+import core.shoulds.Expectable
 
-public interface Testable {
-    fun addExpectation(should: Shouldable)
+interface Testable {
+    fun addExpectation(should: Expectable)
     fun runTest(): TestResult
 }
