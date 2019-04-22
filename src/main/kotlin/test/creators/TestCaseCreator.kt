@@ -1,4 +1,4 @@
-package test_creators
+package test.creators
 
 import core.test.Testable
 

@@ -1,4 +1,4 @@
-package test_creators
+package test.creators
 
 import core.actions.Click
 import core.elements.ElementByXpath
