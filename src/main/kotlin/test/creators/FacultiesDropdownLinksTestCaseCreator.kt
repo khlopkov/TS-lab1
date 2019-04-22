@@ -54,7 +54,7 @@ class FacultiesDropdownLinksTestCaseCreator(dropdownLink: FacultiesDropdownLink)
 
         this.testCase.addExpectation(ElementShouldExist(staffLink))
         // TODO: move to another test case
-        // this.testCase.addExpectation(ElementShouldContainText(staffLink, staffLinkText)
+        this.testCase.addExpectation(ElementShouldContainText(staffLink, staffLinkText))
         //         .then(Click(staffLink)))
 
         // this.testCase.addExpectation(ElementShouldExist(this.pageHeader))
@@ -68,7 +68,7 @@ class FacultiesDropdownLinksTestCaseCreator(dropdownLink: FacultiesDropdownLink)
 
             this.testCase.addExpectation(ElementShouldExist(filesLink))
             // TODO: move to another test case
-            // this.testCase.addExpectation(ElementShouldContainText(filesLink, filesLinkText)
+            this.testCase.addExpectation(ElementShouldContainText(filesLink, filesLinkText))
             //         .then(Click(filesLink)))
 
             // this.testCase.addExpectation(ElementShouldExist(this.pageHeader))
