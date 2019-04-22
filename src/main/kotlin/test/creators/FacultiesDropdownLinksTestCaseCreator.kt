@@ -76,3 +76,4 @@ class FacultiesDropdownLinksTestCaseCreator(dropdownLink: FacultiesDropdownLink)
         }
     }
 }
+

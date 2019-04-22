@@ -25,8 +25,13 @@ fun main(args: Array<String>) {
     // testStudsDropdownFilesLink()
     // testStudsDropdownForLeaderLink()
     // testStudsDropdownClubsLink()
-    testFacultiesDropdownIktLink()
-    testFacultiesDropdownFtmiLink()
+    // testFacultiesDropdownIktLink()
+    // testFacultiesDropdownFtmiLink()
+    testIktAboutUsSidebarLink()
+    testIktFilesSidebarLink()
+    testIktStaffSidebarLink()
+    testFtmiAboutUsSidebarLink()
+    testFtmiStaffSidebarLink()
 }
 
 private const val PageHeaderXPath: String = "//h2[contains(@class, 'page-header')]"
@@ -235,3 +240,39 @@ fun testFacultiesDropdownFtmiLink() {
 
     println(testCaseCreator.testCase.runTest().message)
 }
+
+fun testIktAboutUsSidebarLink() {
+    val testCaseCreator: TestCaseCreator
+    testCaseCreator = FacultiesSidebarLinksTestCaseCreator(FacultiesDropdownLink.IKT, FacultiesSidebarLink.AboutUs)
+
+    println(testCaseCreator.testCase.runTest().message)
+}
+
+fun testIktStaffSidebarLink() {
+    val testCaseCreator: TestCaseCreator
+    testCaseCreator = FacultiesSidebarLinksTestCaseCreator(FacultiesDropdownLink.IKT, FacultiesSidebarLink.Staff)
+
+    println(testCaseCreator.testCase.runTest().message)
+}
+
+fun testIktFilesSidebarLink() {
+    val testCaseCreator: TestCaseCreator
+    testCaseCreator = FacultiesSidebarLinksTestCaseCreator(FacultiesDropdownLink.IKT, FacultiesSidebarLink.Files)
+
+    println(testCaseCreator.testCase.runTest().message)
+}
+
+fun testFtmiAboutUsSidebarLink() {
+    val testCaseCreator: TestCaseCreator
+    testCaseCreator = FacultiesSidebarLinksTestCaseCreator(FacultiesDropdownLink.FTMI, FacultiesSidebarLink.AboutUs)
+
+    println(testCaseCreator.testCase.runTest().message)
+}
+
+fun testFtmiStaffSidebarLink() {
+    val testCaseCreator: TestCaseCreator
+    testCaseCreator = FacultiesSidebarLinksTestCaseCreator(FacultiesDropdownLink.FTMI, FacultiesSidebarLink.Staff)
+
+    println(testCaseCreator.testCase.runTest().message)
+}
+
