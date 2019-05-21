@@ -27,11 +27,12 @@ fun main(args: Array<String>) {
     // testStudsDropdownClubsLink()
     // testFacultiesDropdownIktLink()
     // testFacultiesDropdownFtmiLink()
-    testIktAboutUsSidebarLink()
-    testIktFilesSidebarLink()
-    testIktStaffSidebarLink()
-    testFtmiAboutUsSidebarLink()
-    testFtmiStaffSidebarLink()
+    // testIktAboutUsSidebarLink()
+    // testIktFilesSidebarLink()
+    // testIktStaffSidebarLink()
+    // testFtmiAboutUsSidebarLink()
+    // testFtmiStaffSidebarLink()
+    testStaffSlider()
 }
 
 private const val PageHeaderXPath: String = "//h2[contains(@class, 'page-header')]"
@@ -276,3 +277,9 @@ fun testFtmiStaffSidebarLink() {
     println(testCaseCreator.testCase.runTest().message)
 }
 
+fun testStaffSlider() {
+    val testCaseCreator: TestCaseCreator
+    testCaseCreator = ClickSliderTestCaseCreator()
+
+    println(testCaseCreator.testCase.runTest().message)
+}
