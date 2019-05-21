@@ -2,9 +2,9 @@ package core.shoulds
 
 import org.openqa.selenium.WebDriver
 
-class TitleShould(private val what: String, private val titleShould: (String) -> Boolean) : Expectable {
+class TitleShould(private val titleShouldWhat: String, private val titleShould: (String) -> Boolean) : Expectable {
     override val description: String
-        get() = "Title should be ${this.what}"
+        get() = "Заголовок должен ${this.titleShouldWhat}"
 
     override fun should(driver: WebDriver): Boolean {
         return this.titleShould(driver.title)

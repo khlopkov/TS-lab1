@@ -30,7 +30,7 @@ class FacultiesDropdownLinksTestCaseCreator(dropdownLink: FacultiesDropdownLink)
     }
 
     init {
-        this.testCase.addExpectation(UrlShould("Быть равным ${dropdownLink.url}") { it == dropdownLink.url })
+        this.testCase.addExpectation(UrlShould("быть равным ${dropdownLink.url}") { it == dropdownLink.url })
     }
 
     init {

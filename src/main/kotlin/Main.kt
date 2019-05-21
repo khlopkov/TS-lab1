@@ -42,7 +42,7 @@ fun testNavbarStaffLink() {
     val testCase = TestCase("testStaffLink", NavLinkClickPreset(NavBarLink.Staff))
 
     testCase.addExpectation(TitleShould(
-            "Состав Совет обучающихся Совет обучающихся университета ИТМО"
+            "содержать \"Состав Совет обучающихся Совет обучающихся университета ИТМО\""
     ) { it.contains("Состав Совет обучающихся Совет обучающихся университета ИТМО", true) })
 
     testCase.addExpectation(ElementShouldExist(ElementByXpath(PageHeaderXPath)))
@@ -53,7 +53,7 @@ fun testNavbarStaffLink() {
 
     testCase.addExpectation(ElementShouldExist(ElementByXpath(PageH4SubheaderXPath)))
     testCase.addExpectation(ElementShould(
-            "содержать Совет обучающихся",
+            "содержать \"Совет обучающихся\"",
             ElementByXpath(PageH4SubheaderXPath)
     ) { it.text.contains("Совет обучающихся", true) })
 
@@ -65,7 +65,7 @@ fun testNavbarAchievementsLink() {
     val testCase = TestCase("testAchievementsLink", NavLinkClickPreset(NavBarLink.Achievements))
 
     testCase.addExpectation(TitleShould(
-            "Совет обучающихся университета ИТМО"
+            "содержать \"Совет обучающихся университета ИТМО\""
     ) { it.contains("Совет обучающихся университета ИТМО", true) })
 
     testCase.addExpectation(ElementShouldExist(ElementByXpath(PageHeaderXPath)))
@@ -82,12 +82,12 @@ fun testNavbarNewsLink() {
     val testCase = TestCase("testNewsLink", NavLinkClickPreset(NavBarLink.News))
 
     testCase.addExpectation(TitleShould(
-            "Новости Совет обучающихся Университета ИТМО"
+            "содержать \"Новости Совет обучающихся Университета ИТМО\""
     ) { it.contains("Новости Совет обучающихся Университета ИТМО" , true) })
 
     testCase.addExpectation(ElementShouldExist(ElementByXpath(PageH3SubheaderXPath)))
     testCase.addExpectation(ElementShould(
-            "содержать Новости",
+            "содержать \"Новости\"",
             ElementByXpath(PageH3SubheaderXPath)
     ) { it.text.contains("Новости", true) })
 
@@ -99,7 +99,7 @@ fun testNavbarProjectsLink() {
     val testCase = TestCase("testProjectLink", NavLinkClickPreset(NavBarLink.Projects))
 
     testCase.addExpectation(TitleShould(
-            "Проекты Совет обучающихся Университета ИТМО"
+            "содержать \"Проекты Совет обучающихся Университета ИТМО\""
     ) { it.contains("Проекты Совет обучающихся Университета ИТМО" , true) })
 
     testCase.addExpectation(ElementShould(
@@ -115,18 +115,18 @@ fun testNavbarFilesLink() {
     val testCase = TestCase("testFilesLink", NavLinkClickPreset(NavBarLink.Files))
 
     testCase.addExpectation(TitleShould(
-            "Файлы Совет обучающихся Совет обучающихся Университета ИТМО"
+            "содержать \"Файлы Совет обучающихся Совет обучающихся Университета ИТМО\""
     ) { it.contains("Файлы Совет обучающихся Совет обучающихся Университета ИТМО" , true) })
 
     testCase.addExpectation(ElementShouldExist(ElementByXpath(PageHeaderXPath)))
     testCase.addExpectation(ElementShould(
-            "содержать Файлы",
+            "содержать \"Файлы\"",
             ElementByXpath(PageHeaderXPath)
     ) { it.text.contains("Файлы", true) })
 
     testCase.addExpectation(ElementShouldExist(ElementByXpath(PageH4SubheaderXPath)))
     testCase.addExpectation(ElementShould(
-            "содержать Совет обучающихся",
+            "содержать \"Совет обучающихся\"",
             ElementByXpath(PageH4SubheaderXPath)
     ) { it.text.contains("Совет обучающихся", true) })
 
@@ -138,12 +138,12 @@ fun testNavbarMediaLink() {
     val testCase = TestCase("testMediaLink", NavLinkClickPreset(NavBarLink.Media))
 
     testCase.addExpectation(TitleShould(
-            "Медиа Совет обучающихся Университета ИТМО"
+            "содержать \"Медиа Совет обучающихся Университета ИТМО\""
     ) { it.contains("Медиа Совет обучающихся Университета ИТМО" , true) })
 
     testCase.addExpectation(ElementShouldExist(ElementByXpath(PageH4SubheaderXPath)))
     testCase.addExpectation(ElementShould(
-            "содержать Медиа",
+            "содержать \"Медиа\"",
             ElementByXpath(PageH4SubheaderXPath)
     ) { it.text.contains("Медиа", true) })
 
@@ -155,12 +155,12 @@ fun testNavbarInformationLink() {
     val testCase = TestCase("testInformationLink", NavLinkClickPreset(NavBarLink.Info))
 
     testCase.addExpectation(TitleShould(
-            "Совет обучающихся Университета ИТМО"
+            "содержать \"Совет обучающихся Университета ИТМО\""
     ) { it.contains("Совет обучающихся Университета ИТМО" , true) })
 
     testCase.addExpectation(ElementShouldExist(ElementByXpath(PageHeaderXPath)))
     testCase.addExpectation(ElementShould(
-            "содержать Полезная информация",
+            "содержать \"Полезная информация\"",
             ElementByXpath(PageHeaderXPath)
     ) { it.text.contains("Полезная информация", true) })
 
@@ -172,12 +172,12 @@ fun testNavbarPartnersLink() {
     val testCase = TestCase("testPartnersLink", NavLinkClickPreset(NavBarLink.Partners))
 
     testCase.addExpectation(TitleShould(
-            "Партнеры Совет обучающихся Совет обучающихся Университета ИТМО"
+            "содержать \"Партнеры Совет обучающихся Совет обучающихся Университета ИТМО\""
     ) { it.contains("Партнеры Совет обучающихся Совет обучающихся Университета ИТМО" , true) })
 
     testCase.addExpectation(ElementShouldExist(ElementByXpath(PageH3SubheaderXPath)))
     testCase.addExpectation(ElementShould(
-            "содержать Партнёры",
+            "содержать \"Партнёры\"",
             ElementByXpath(PageH3SubheaderXPath)
     ) { it.text.contains("Партнёры", true) })
 

@@ -6,14 +6,14 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 
 open class ElementShould(
-        protected val what: String,
+        private val shouldWhat: String,
         private val query: ElementQuery,
         private val elementShould: (WebElement) -> Boolean
 ) : Expectable {
     override val description: String
-        get() = "Element with ${this.query.identifierType} \"${this.query.identifier}\" should ${this.what}"
+        get() = "элемент с ${this.query.identifierType} \"${this.query.identifier}\" должен ${this.shouldWhat}"
 
-    protected fun findElement(driver: WebDriver): WebElement {
+    private fun findElement(driver: WebDriver): WebElement {
         return ElementFinder(this.query).findElement(driver)
     }
 

@@ -9,7 +9,7 @@ class Click constructor(private val query: ElementQuery) : Actionable {
   private val elementFinder: ElementFinder = ElementFinder(this.query)
 
   override val description: String
-    get() = "click on element with ${this.query.identifierType} \"${this.query.identifier}\""
+    get() = "Нажатие на элемент с ${this.query.identifierType} \"${this.query.identifier}\""
 
   override fun `do`(driver: WebDriver) {
     val element: WebElement = this.elementFinder.findElement(driver)

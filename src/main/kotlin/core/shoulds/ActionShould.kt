@@ -3,9 +3,9 @@ package core.shoulds
 import core.actions.Actionable
 import org.openqa.selenium.WebDriver
 
-class ActionShould(private val what: String, private vararg val actions: Actionable, private val expectation: Expectable) : Expectable {
+class ActionShould(private val then : String, private vararg val actions: Actionable, private val expectation: Expectable) : Expectable {
     override val description: String
-        get() = "Should ${this.what}"
+        get() = "${this.then}"
 
     private fun executeActions(driver: WebDriver) {
         for (action in actions) {

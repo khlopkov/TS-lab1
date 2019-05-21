@@ -37,13 +37,13 @@ class  StudsDropdownLinksClickTestCaseCreator(linkIdentifier: StudsDropdownLink)
 
     init {
         val urlShould = UrlShould(
-                "be equal $url"
+                "быть равным $url"
         ) { it == this.url }
 
         testCase.addExpectation(urlShould)
 
         val headerShould = ElementShould(
-                "Header should be ${linkIdentifier.title}",
+                "быть заголовком содержащим ${linkIdentifier.title}",
                 this.headerQuery
         ) { it.text.contains(linkIdentifier.title, true) }
 
@@ -51,7 +51,7 @@ class  StudsDropdownLinksClickTestCaseCreator(linkIdentifier: StudsDropdownLink)
 
         testCase.addExpectation(
             ActionShould(
-                    "Нажать на ссылку ${linkIdentifier.title} на сайдбаре и проверить ялвяеетс ли URL ${this.url}",
+                    "нажатие на ссылку ${linkIdentifier.title} на сайдбаре должно изменить URL на ${this.url}",
                     Click(this.sidebarLinkQuery),
                     expectation = urlShould
             )

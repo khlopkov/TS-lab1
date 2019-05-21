@@ -24,12 +24,11 @@ class ClickDropdownTestCaseCreator(listIdentifier: DropdownListIdentifier) : Tes
 
     init {
         this.testCase.addExpectation(ActionShould(
-                "Нажатие снова скроет список",
+                "нажатие снова скроет список",
                 Click(ElementByXpath(this.dropdownListLinkXPath)),
-                expectation =  ElementShould(
-                    "be visible",
+                expectation =  ElementShouldBeVisible(
                     ElementByXpath(this.dropdownMenuXPath)
-                ) { !it.isDisplayed }
+                )
             )
         )
     }
