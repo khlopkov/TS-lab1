@@ -3,14 +3,14 @@ package core.test
 import core.actions.Actionable
 import java.util.*
 
-public open class TestPreset() : TestPresetable, TestPreseted {
-    protected val preactionsArr = ArrayList<Actionable>()
-    protected val actionsArr = ArrayList<Actionable>()
-    protected val afterTestActionsArr = ArrayList<Actionable>()
+open class TestPreset() : TestPresetable, TestPreseted {
+    private val initialConditionsArr = ArrayList<Actionable>()
+    private val actionsArr = ArrayList<Actionable>()
+    private val afterTestActionsArr = ArrayList<Actionable>()
 
-    public constructor(basedOn: TestPreseted) : this (){
-        for(preaction in basedOn.preactions) {
-            this.preactionsArr.add(preaction)
+    constructor(basedOn: TestPreseted) : this (){
+        for(initialCondition in basedOn.initialConditions) {
+            this.initialConditionsArr.add(initialCondition)
         }
 
         for(action in basedOn.actions) {
@@ -22,8 +22,8 @@ public open class TestPreset() : TestPresetable, TestPreseted {
         }
     }
 
-    override val preactions: Iterable<Actionable>
-        get() = this.preactionsArr
+    override val initialConditions: Iterable<Actionable>
+        get() = this.initialConditionsArr
 
     override val actions: Iterable<Actionable>
         get () = this.actionsArr
@@ -31,8 +31,8 @@ public open class TestPreset() : TestPresetable, TestPreseted {
     override val afterTestActions: Iterable<Actionable>
         get() = this.afterTestActionsArr
 
-    override fun addPreaction(action: Actionable) {
-        this.preactionsArr.add(action)
+    override fun addInitialCondition(action: Actionable) {
+        this.initialConditionsArr.add(action)
     }
 
     override fun addAction(action: Actionable) {

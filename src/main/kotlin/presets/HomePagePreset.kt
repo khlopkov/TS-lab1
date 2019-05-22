@@ -5,6 +5,6 @@ import core.test.TestPreset
 
 class HomePagePreset : TestPreset() {
     init {
-        this.addPreaction(GetUrl("https://student.ifmo.ru/"))
+        this.addInitialCondition(GetUrl("https://student.ifmo.ru/"))
     }
 }

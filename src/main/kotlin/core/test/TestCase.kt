@@ -26,7 +26,7 @@ class TestCase : TestPreset, Testable {
     override fun runTest(): TestResult {
         val driver: WebDriver = ChromeDriver()
 
-        for(preaction in preactions) {
+        for(preaction in initialConditions) {
             try {
                 preaction.`do`(driver)
             } catch (e: TestCaseException) {
