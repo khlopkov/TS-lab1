@@ -10,9 +10,16 @@ class TestCase : TestPreset, Testable {
     val expectations: Iterable<Expectable>
             get() = this.expectationsArr
     val name: String
+    val id: String
 
-    constructor (name: String) : super() { this.name = name }
-    constructor(name: String, basedOn: TestPreseted) : super(basedOn) { this.name = name }
+    constructor (name: String, id: String) : super() {
+        this.name = name
+        this.id  = id
+    }
+    constructor(name: String, id: String, basedOn: TestPreseted) : super(basedOn) {
+        this.name = name
+        this.id = id
+    }
 
     private fun closeDriver(driver: WebDriver) {
         driver.close()

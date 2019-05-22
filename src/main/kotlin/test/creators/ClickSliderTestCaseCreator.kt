@@ -9,8 +9,8 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import presets.OpenSliderPreset
 
-class ClickSliderTestCaseCreator : TestCaseCreator {
-    override val testCase = TestCase("Нажатие на фото, открывающее слайдер", OpenSliderPreset())
+class ClickSliderTestCaseCreator(testId: String) : TestCaseCreator {
+    override val testCase = TestCase("Нажатие на фото, открывающее слайдер", testId, OpenSliderPreset())
 
     init {
         this.testCase.addExpectation(ElementShouldBeVisible(ElementBySelector("#blueimp-gallery-team")))

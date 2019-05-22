@@ -10,9 +10,9 @@ import core.test.Testable
 import presets.DropdownListIdentifier
 import presets.DropdownPreset
 
-class ClickDropdownTestCaseCreator(listIdentifier: DropdownListIdentifier) : TestCaseCreator {
+class ClickDropdownTestCaseCreator(listIdentifier: DropdownListIdentifier, testId: String) : TestCaseCreator {
     private val dropdownListLinkXPath: String = "//*[@id='${listIdentifier.id}']"
-    override val testCase: TestCase = TestCase("Нажатие на выпадающий список ${listIdentifier.name}", DropdownPreset(listIdentifier))
+    override val testCase: TestCase = TestCase("Нажатие на выпадающий список ${listIdentifier.name}", testId, DropdownPreset(listIdentifier))
     private val dropdownMenuXPath: String = "/html/body/header/div/div/div[2]/div/div[${listIdentifier.index}]/div"
 
     init {

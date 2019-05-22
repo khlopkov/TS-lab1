@@ -15,11 +15,12 @@ enum class FacultiesDropdownLink(val index: Int, val title: String, val url: Str
     FTMI(2, "Факультет технологического менеджмента и инноваций", "https://student.ifmo.ru/ftmi/")
 }
 
-class FacultiesDropdownLinksTestCaseCreator(dropdownLink: FacultiesDropdownLink) : TestCaseCreator {
+class FacultiesDropdownLinksTestCaseCreator(dropdownLink: FacultiesDropdownLink, testId: String) : TestCaseCreator {
     private val pageHeader = ElementByXpath("/html/body/div[1]/div/div[1]/h2")
 
     override val testCase: TestCase = TestCase(
             "Нажатие на ссылку выпадющего списка \"студеческие клубы\" ${dropdownLink.title}",
+            testId,
             DropdownPreset(DropdownListIdentifier.FacultiesList)
     )
 
@@ -53,12 +54,7 @@ class FacultiesDropdownLinksTestCaseCreator(dropdownLink: FacultiesDropdownLink)
         val staffLinkText = "Состав"
 
         this.testCase.addExpectation(ElementShouldExist(staffLink))
-        // TODO: move to another test case
         this.testCase.addExpectation(ElementShouldContainText(staffLink, staffLinkText))
-        //         .then(Click(staffLink)))
-
-        // this.testCase.addExpectation(ElementShouldExist(this.pageHeader))
-        // this.testCase.addExpectation(ElementShouldContainText(this.pageHeader, staffLinkText))
     }
 
     init {
@@ -67,12 +63,7 @@ class FacultiesDropdownLinksTestCaseCreator(dropdownLink: FacultiesDropdownLink)
             val filesLinkText = "Файлы"
 
             this.testCase.addExpectation(ElementShouldExist(filesLink))
-            // TODO: move to another test case
             this.testCase.addExpectation(ElementShouldContainText(filesLink, filesLinkText))
-            //         .then(Click(filesLink)))
-
-            // this.testCase.addExpectation(ElementShouldExist(this.pageHeader))
-            // this.testCase.addExpectation(ElementShouldContainText(this.pageHeader, filesLinkText))
         }
     }
 }

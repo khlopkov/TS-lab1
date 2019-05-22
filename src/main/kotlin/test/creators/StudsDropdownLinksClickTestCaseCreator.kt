@@ -20,7 +20,7 @@ enum class StudsDropdownLink(val index: Int, val title: String, val pageUrlIndex
     Clubs(6, "Клубы", 84)
 }
 
-class  StudsDropdownLinksClickTestCaseCreator(linkIdentifier: StudsDropdownLink) : TestCaseCreator {
+class  StudsDropdownLinksClickTestCaseCreator(linkIdentifier: StudsDropdownLink, testId: String) : TestCaseCreator {
     private val headerQuery = ElementByXpath("/html/body/div[1]/div/div[1]/h2")
     private val linkQuery = ElementByXpath("/html/body/header/div[1]/div/div[2]/div/div[1]/div/div/div/div/ul/h4[${linkIdentifier.index}]/a")
     private val url = "https://student.ifmo.ru/pages/${linkIdentifier.pageUrlIndex}/"
@@ -28,6 +28,7 @@ class  StudsDropdownLinksClickTestCaseCreator(linkIdentifier: StudsDropdownLink)
 
     override val testCase: TestCase = TestCase(
             "Нажатие на ссылку выпадющего списка \"студеческие клубы\" ${linkIdentifier.title}",
+            testId,
             DropdownPreset(DropdownListIdentifier.StudentsClubList)
     )
 

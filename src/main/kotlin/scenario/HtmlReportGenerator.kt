@@ -8,7 +8,12 @@ import j2html.tags.ContainerTag
 
 class HtmlReportGenerator : HtmlReportable {
     override fun generateReport(tests: Iterable<TestCase>): ContainerTag? {
-        var tables = tests.map {this.testTable(it)}
+        var tables = tests.map {
+            div(
+                h2(it.id),
+                this.testTable(it)
+            )
+        }
         return html(
                 head(link().withRel("stylesheet").withHref("styles.css")),
                 body(
@@ -59,6 +64,10 @@ class HtmlReportGenerator : HtmlReportable {
                 td("Ключевое слово").withClass("keyword-col"),
                 td("Описание").withClass("description-col")
             ),
+                tr(
+                        td("Сценарий").withClass("keyword-col"),
+                        td(testCase.name).withClass("description-col")
+                ),
             initialConditionsRow(testCase.initialConditions),
             actionsRow(testCase.actions),
             expectationsRow(testCase.expectations)

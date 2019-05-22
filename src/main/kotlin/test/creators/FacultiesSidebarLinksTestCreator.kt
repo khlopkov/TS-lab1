@@ -13,11 +13,12 @@ enum class FacultiesSidebarLink(val linkQuery: ElementQuery, val header: String)
     Files(ElementByXpath("/html/body/div[1]/div/div[2]/ul/li[3]/a"), "Файлы")
 }
 
-class FacultiesSidebarLinksTestCaseCreator (dropdownLink: FacultiesDropdownLink, facultiesSidebarLink: FacultiesSidebarLink) : TestCaseCreator {
+class FacultiesSidebarLinksTestCaseCreator (dropdownLink: FacultiesDropdownLink, facultiesSidebarLink: FacultiesSidebarLink, testId: String) : TestCaseCreator {
     private val pageHeader = ElementByXpath("/html/body/div[1]/div/div[1]/h2")
 
     override val testCase: TestCase = TestCase(
             "Нажатие на ссылку ${facultiesSidebarLink.header}",
+            testId,
             FacultiesSidebarLinksPresset(dropdownLink, facultiesSidebarLink)
     )
     init{
