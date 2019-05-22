@@ -12,11 +12,10 @@ import presets.DropdownPreset
 
 class ClickDropdownTestCaseCreator(listIdentifier: DropdownListIdentifier) : TestCaseCreator {
     private val dropdownListLinkXPath: String = "//*[@id='${listIdentifier.id}']"
-    override val testCase: Testable
+    override val testCase: TestCase = TestCase("Нажатие на выпадающий список ${listIdentifier.name}", DropdownPreset(listIdentifier))
     private val dropdownMenuXPath: String = "/html/body/header/div/div/div[2]/div/div[${listIdentifier.index}]/div"
 
     init {
-        this.testCase = TestCase("Нажатие на выпадающий список ${listIdentifier.name}", DropdownPreset(listIdentifier))
         this.testCase.addExpectation(ElementShouldBeVisible(ElementByXpath(
                 this.dropdownMenuXPath
         )))

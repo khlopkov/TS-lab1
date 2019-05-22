@@ -3,43 +3,56 @@ import core.shoulds.ElementShould
 import core.shoulds.ElementShouldExist
 import core.shoulds.TitleShould
 import core.test.TestCase
+import core.test.Testable
 import presets.DropdownListIdentifier
 import presets.NavBarLink
 import presets.NavLinkClickPreset
+import scenario.HtmlReportGenerator
 import test.creators.*
+import java.io.FileWriter
 
 fun main(args: Array<String>) {
-    // testNavbarStaffLink()
-    // testNavbarAchievementsLink()
-    // testNavbarNewsLink()
-    // testNavbarProjectsLink()
-    // testNavbarFilesLink()
-    // testNavbarMediaLink()
-    // testNavbarInformationLink()
-    // testNavbarPartnersLink()
-    // testDropdownStudentClubs()
-    // testDropdownFaculties()
-    // testStudsDropdownAboutLink()
-    // testStudsDropdownCreateClubLink()
-    // testStudsDropdownMentoringLink()
-    // testStudsDropdownFilesLink()
-    // testStudsDropdownForLeaderLink()
-    // testStudsDropdownClubsLink()
-    // testFacultiesDropdownIktLink()
-    // testFacultiesDropdownFtmiLink()
-    // testIktAboutUsSidebarLink()
-    // testIktFilesSidebarLink()
-    // testIktStaffSidebarLink()
-    // testFtmiAboutUsSidebarLink()
-    // testFtmiStaffSidebarLink()
-    testStaffSlider()
+    var testList = mutableListOf<TestCase>()
+
+    testList.add(testNavbarStaffLink())
+    testList.add(testNavbarAchievementsLink())
+    testList.add(testNavbarNewsLink())
+    testList.add(testNavbarProjectsLink())
+    testList.add(testNavbarFilesLink())
+    testList.add(testNavbarMediaLink())
+    testList.add(testNavbarInformationLink())
+    testList.add(testNavbarPartnersLink())
+    testList.add(testDropdownStudentClubs())
+    testList.add(testDropdownFaculties())
+    testList.add(testStudsDropdownAboutLink())
+    testList.add(testStudsDropdownCreateClubLink())
+    testList.add(testStudsDropdownMentoringLink())
+    testList.add(testStudsDropdownFilesLink())
+    testList.add(testStudsDropdownForLeaderLink())
+    testList.add(testStudsDropdownClubsLink())
+    testList.add(testFacultiesDropdownIktLink())
+    testList.add(testFacultiesDropdownFtmiLink())
+    testList.add(testIktAboutUsSidebarLink())
+    testList.add(testIktFilesSidebarLink())
+    testList.add(testIktStaffSidebarLink())
+    testList.add(testFtmiAboutUsSidebarLink())
+    testList.add(testFtmiStaffSidebarLink())
+    testList.add(testStaffSlider())
+
+    val reporter = HtmlReportGenerator()
+    val writer = FileWriter("report.html")
+    reporter.generateReport(testList)?.render(writer)
+
+    // for(test in testList) {
+    //     println(test.runTest().message);
+    // }
 }
 
 private const val PageHeaderXPath: String = "//h2[contains(@class, 'page-header')]"
 private const val PageH4SubheaderXPath: String = "//h4[contains(@class, 'page-sub-header')]"
 private const val PageH3SubheaderXPath: String = "//h3[contains(@class, 'page-sub-header')]"
 
-fun testNavbarStaffLink() {
+fun testNavbarStaffLink(): TestCase {
     val testCase = TestCase("testStaffLink", NavLinkClickPreset(NavBarLink.Staff))
 
     testCase.addExpectation(TitleShould(
@@ -58,11 +71,10 @@ fun testNavbarStaffLink() {
             ElementByXpath(PageH4SubheaderXPath)
     ) { it.text.contains("Совет обучающихся", true) })
 
-    val message = testCase.runTest().message
-    println(message)
+    return testCase
 }
 
-fun testNavbarAchievementsLink() {
+fun testNavbarAchievementsLink(): TestCase {
     val testCase = TestCase("testAchievementsLink", NavLinkClickPreset(NavBarLink.Achievements))
 
     testCase.addExpectation(TitleShould(
@@ -75,11 +87,10 @@ fun testNavbarAchievementsLink() {
             ElementByXpath(PageHeaderXPath)
     ) { it.text == "Достижения" })
 
-    val message = testCase.runTest().message
-    println(message)
+    return testCase
 }
 
-fun testNavbarNewsLink() {
+fun testNavbarNewsLink(): TestCase {
     val testCase = TestCase("testNewsLink", NavLinkClickPreset(NavBarLink.News))
 
     testCase.addExpectation(TitleShould(
@@ -92,11 +103,10 @@ fun testNavbarNewsLink() {
             ElementByXpath(PageH3SubheaderXPath)
     ) { it.text.contains("Новости", true) })
 
-    val message = testCase.runTest().message
-    println(message)
+    return testCase
 }
 
-fun testNavbarProjectsLink() {
+fun testNavbarProjectsLink(): TestCase {
     val testCase = TestCase("testProjectLink", NavLinkClickPreset(NavBarLink.Projects))
 
     testCase.addExpectation(TitleShould(
@@ -108,11 +118,10 @@ fun testNavbarProjectsLink() {
             ElementByXpath(PageHeaderXPath)
     ) { it.text.contains("Проекты", true) })
 
-    val message = testCase.runTest().message
-    println(message)
+    return testCase
 }
 
-fun testNavbarFilesLink() {
+fun testNavbarFilesLink(): TestCase {
     val testCase = TestCase("testFilesLink", NavLinkClickPreset(NavBarLink.Files))
 
     testCase.addExpectation(TitleShould(
@@ -131,11 +140,10 @@ fun testNavbarFilesLink() {
             ElementByXpath(PageH4SubheaderXPath)
     ) { it.text.contains("Совет обучающихся", true) })
 
-    val message = testCase.runTest().message
-    println(message)
+    return testCase
 }
 
-fun testNavbarMediaLink() {
+fun testNavbarMediaLink(): TestCase {
     val testCase = TestCase("testMediaLink", NavLinkClickPreset(NavBarLink.Media))
 
     testCase.addExpectation(TitleShould(
@@ -148,11 +156,10 @@ fun testNavbarMediaLink() {
             ElementByXpath(PageH4SubheaderXPath)
     ) { it.text.contains("Медиа", true) })
 
-    val message = testCase.runTest().message
-    println(message)
+    return testCase
 }
 
-fun testNavbarInformationLink() {
+fun testNavbarInformationLink(): TestCase {
     val testCase = TestCase("testInformationLink", NavLinkClickPreset(NavBarLink.Info))
 
     testCase.addExpectation(TitleShould(
@@ -165,11 +172,10 @@ fun testNavbarInformationLink() {
             ElementByXpath(PageHeaderXPath)
     ) { it.text.contains("Полезная информация", true) })
 
-    val message = testCase.runTest().message
-    println(message)
+    return testCase
 }
 
-fun testNavbarPartnersLink() {
+fun testNavbarPartnersLink(): TestCase {
     val testCase = TestCase("testPartnersLink", NavLinkClickPreset(NavBarLink.Partners))
 
     testCase.addExpectation(TitleShould(
@@ -182,104 +188,93 @@ fun testNavbarPartnersLink() {
             ElementByXpath(PageH3SubheaderXPath)
     ) { it.text.contains("Партнёры", true) })
 
-    val message = testCase.runTest().message
-    println(message)
+    return testCase
 }
 
-fun testDropdownStudentClubs() {
-    val testCaseFactory = ClickDropdownTestCaseCreator(DropdownListIdentifier.StudentsClubList)
-    val message = testCaseFactory.testCase.runTest().message
-    println(message)
+fun testDropdownStudentClubs(): TestCase {
+    val testCaseCreator = ClickDropdownTestCaseCreator(DropdownListIdentifier.StudentsClubList)
+    return testCaseCreator.testCase
 }
 
-fun testDropdownFaculties() {
-    val testCaseFactory = ClickDropdownTestCaseCreator(DropdownListIdentifier.FacultiesList)
-    val message = testCaseFactory.testCase.runTest().message
-    println(message)
+fun testDropdownFaculties(): TestCase {
+    val testCaseCreator = ClickDropdownTestCaseCreator(DropdownListIdentifier.FacultiesList)
+    return testCaseCreator.testCase
 }
 
-fun testStudsDropdownAboutLink() {
-    val testFactory = StudsDropdownLinksClickTestCaseCreator(StudsDropdownLink.AboutClubSystem)
-    println(testFactory.testCase.runTest().message)
+fun testStudsDropdownAboutLink(): TestCase {
+    val testCaseCreator = StudsDropdownLinksClickTestCaseCreator(StudsDropdownLink.AboutClubSystem)
+    return testCaseCreator.testCase
 }
 
-fun testStudsDropdownCreateClubLink() {
-    val testFactory = StudsDropdownLinksClickTestCaseCreator(StudsDropdownLink.ClubCreation)
-    println(testFactory.testCase.runTest().message)
+fun testStudsDropdownCreateClubLink(): TestCase {
+    val testCaseCreator = StudsDropdownLinksClickTestCaseCreator(StudsDropdownLink.ClubCreation)
+    return testCaseCreator.testCase
 }
 
-fun testStudsDropdownMentoringLink() {
-    val testFactory = StudsDropdownLinksClickTestCaseCreator(StudsDropdownLink.ClubMentoring)
-    println(testFactory.testCase.runTest().message)
+fun testStudsDropdownMentoringLink(): TestCase {
+    val testCaseCreator = StudsDropdownLinksClickTestCaseCreator(StudsDropdownLink.ClubMentoring)
+    return testCaseCreator.testCase
 }
 
-fun testStudsDropdownFilesLink() {
-    val testFactory = StudsDropdownLinksClickTestCaseCreator(StudsDropdownLink.FilesAndInstructions)
-    println(testFactory.testCase.runTest().message)
+fun testStudsDropdownFilesLink(): TestCase {
+    val testCaseCreator = StudsDropdownLinksClickTestCaseCreator(StudsDropdownLink.FilesAndInstructions)
+    return testCaseCreator.testCase
 }
 
-fun testStudsDropdownForLeaderLink() {
-    val testFactory = StudsDropdownLinksClickTestCaseCreator(StudsDropdownLink.ForClubLeader)
-    println(testFactory.testCase.runTest().message)
+fun testStudsDropdownForLeaderLink(): TestCase {
+    val testCaseCreator = StudsDropdownLinksClickTestCaseCreator(StudsDropdownLink.ForClubLeader)
+    return testCaseCreator.testCase
 }
 
-fun testStudsDropdownClubsLink() {
-    val testFactory = StudsDropdownLinksClickTestCaseCreator(StudsDropdownLink.Clubs)
-    println(testFactory.testCase.runTest().message)
+fun testStudsDropdownClubsLink(): TestCase {
+    val testCaseCreator = StudsDropdownLinksClickTestCaseCreator(StudsDropdownLink.Clubs)
+    return testCaseCreator.testCase
 }
 
-fun testFacultiesDropdownIktLink() {
+fun testFacultiesDropdownIktLink(): TestCase {
     val testCaseCreator: TestCaseCreator
     testCaseCreator = FacultiesDropdownLinksTestCaseCreator(FacultiesDropdownLink.IKT)
-
-    println(testCaseCreator.testCase.runTest().message)
+    return testCaseCreator.testCase
 }
 
-fun testFacultiesDropdownFtmiLink() {
+fun testFacultiesDropdownFtmiLink(): TestCase {
     val testCaseCreator: TestCaseCreator
     testCaseCreator = FacultiesDropdownLinksTestCaseCreator(FacultiesDropdownLink.FTMI)
-
-    println(testCaseCreator.testCase.runTest().message)
+    return testCaseCreator.testCase
 }
 
-fun testIktAboutUsSidebarLink() {
+fun testIktAboutUsSidebarLink(): TestCase {
     val testCaseCreator: TestCaseCreator
     testCaseCreator = FacultiesSidebarLinksTestCaseCreator(FacultiesDropdownLink.IKT, FacultiesSidebarLink.AboutUs)
-
-    println(testCaseCreator.testCase.runTest().message)
+    return testCaseCreator.testCase
 }
 
-fun testIktStaffSidebarLink() {
+fun testIktStaffSidebarLink(): TestCase {
     val testCaseCreator: TestCaseCreator
     testCaseCreator = FacultiesSidebarLinksTestCaseCreator(FacultiesDropdownLink.IKT, FacultiesSidebarLink.Staff)
-
-    println(testCaseCreator.testCase.runTest().message)
+    return testCaseCreator.testCase
 }
 
-fun testIktFilesSidebarLink() {
+fun testIktFilesSidebarLink(): TestCase {
     val testCaseCreator: TestCaseCreator
     testCaseCreator = FacultiesSidebarLinksTestCaseCreator(FacultiesDropdownLink.IKT, FacultiesSidebarLink.Files)
-
-    println(testCaseCreator.testCase.runTest().message)
+    return testCaseCreator.testCase
 }
 
-fun testFtmiAboutUsSidebarLink() {
+fun testFtmiAboutUsSidebarLink(): TestCase {
     val testCaseCreator: TestCaseCreator
     testCaseCreator = FacultiesSidebarLinksTestCaseCreator(FacultiesDropdownLink.FTMI, FacultiesSidebarLink.AboutUs)
-
-    println(testCaseCreator.testCase.runTest().message)
+    return testCaseCreator.testCase
 }
 
-fun testFtmiStaffSidebarLink() {
+fun testFtmiStaffSidebarLink(): TestCase {
     val testCaseCreator: TestCaseCreator
     testCaseCreator = FacultiesSidebarLinksTestCaseCreator(FacultiesDropdownLink.FTMI, FacultiesSidebarLink.Staff)
-
-    println(testCaseCreator.testCase.runTest().message)
+    return testCaseCreator.testCase
 }
 
-fun testStaffSlider() {
+fun testStaffSlider(): TestCase {
     val testCaseCreator: TestCaseCreator
     testCaseCreator = ClickSliderTestCaseCreator()
-
-    println(testCaseCreator.testCase.runTest().message)
+    return testCaseCreator.testCase
 }

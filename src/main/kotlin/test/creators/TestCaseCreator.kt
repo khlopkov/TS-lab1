@@ -1,7 +1,7 @@
 package test.creators
 
-import core.test.Testable
+import core.test.TestCase
 
 interface TestCaseCreator{
-    val testCase: Testable
+    val testCase: TestCase
 }

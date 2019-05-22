@@ -1,0 +1,21 @@
+table,
+tbody,
+tr {
+  width: 100%;
+  border: 1px solid black;
+}
+
+td {
+  border: 1px solid black;
+}
+
+table {
+  margin: 10px;
+}
+
+.keyword-col {
+  width: 10%;
+}
+.description-col {
+  width: 90%;
+}

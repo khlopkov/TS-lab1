@@ -5,7 +5,6 @@ import core.elements.ElementQuery
 import core.shoulds.ElementShouldContainText
 import core.shoulds.ElementShouldExist
 import core.test.TestCase
-import core.test.Testable
 import presets.FacultiesSidebarLinksPresset
 
 enum class FacultiesSidebarLink(val linkQuery: ElementQuery, val header: String) {
@@ -17,7 +16,7 @@ enum class FacultiesSidebarLink(val linkQuery: ElementQuery, val header: String)
 class FacultiesSidebarLinksTestCaseCreator (dropdownLink: FacultiesDropdownLink, facultiesSidebarLink: FacultiesSidebarLink) : TestCaseCreator {
     private val pageHeader = ElementByXpath("/html/body/div[1]/div/div[1]/h2")
 
-    override val testCase: Testable = TestCase(
+    override val testCase: TestCase = TestCase(
             "Нажатие на ссылку ${facultiesSidebarLink.header}",
             FacultiesSidebarLinksPresset(dropdownLink, facultiesSidebarLink)
     )
