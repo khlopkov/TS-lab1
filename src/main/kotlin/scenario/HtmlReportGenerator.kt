@@ -61,7 +61,7 @@ class HtmlReportGenerator : HtmlReportable {
             ),
             initialConditionsRow(testCase.initialConditions),
             actionsRow(testCase.actions),
-            expectationsRow(testCase.expectaions)
+            expectationsRow(testCase.expectations)
         )
     }
 }
