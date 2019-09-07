@@ -5,7 +5,9 @@ import core.shoulds.TitleShould
 import core.test.TestCase
 import presets.DropdownListIdentifier
 import presets.NavBarLink
+import presets.FooterLink
 import presets.NavLinkClickPreset
+import presets.FooterLinkClickPreset
 import scenario.HtmlReportGenerator
 import test.creators.*
 import java.io.FileWriter
@@ -13,38 +15,46 @@ import java.io.FileWriter
 fun main(args: Array<String>) {
     var testList = mutableListOf<TestCase>()
 
-    testList.add(testNavbarStaffLink())
-    testList.add(testNavbarAchievementsLink())
-    testList.add(testNavbarNewsLink())
-    testList.add(testNavbarProjectsLink())
-    testList.add(testNavbarFilesLink())
-    testList.add(testNavbarMediaLink())
-    testList.add(testNavbarInformationLink())
-    testList.add(testNavbarPartnersLink())
-    testList.add(testDropdownStudentClubs())
-    testList.add(testDropdownFaculties())
-    testList.add(testStudsDropdownAboutLink())
-    testList.add(testStudsDropdownCreateClubLink())
-    testList.add(testStudsDropdownMentoringLink())
-    testList.add(testStudsDropdownFilesLink())
-    testList.add(testStudsDropdownForLeaderLink())
-    testList.add(testStudsDropdownClubsLink())
-    testList.add(testFacultiesDropdownIktLink())
-    testList.add(testFacultiesDropdownFtmiLink())
-    testList.add(testIktAboutUsSidebarLink())
-    testList.add(testIktFilesSidebarLink())
-    testList.add(testIktStaffSidebarLink())
-    testList.add(testFtmiAboutUsSidebarLink())
-    testList.add(testFtmiStaffSidebarLink())
-    testList.add(testStaffSlider())
+    // testList.add(testNavbarStaffLink())
+    // testList.add(testNavbarAchievementsLink())
+    // testList.add(testNavbarNewsLink())
+    // testList.add(testNavbarProjectsLink())
+    // testList.add(testNavbarFilesLink())
+    // testList.add(testNavbarMediaLink())
+    // testList.add(testNavbarInformationLink())
+    // testList.add(testNavbarPartnersLink())
+    // testList.add(testDropdownStudentClubs())
+    // testList.add(testDropdownFaculties())
+    // testList.add(testStudsDropdownAboutLink())
+    // testList.add(testStudsDropdownCreateClubLink())
+    // testList.add(testStudsDropdownMentoringLink())
+    // testList.add(testStudsDropdownFilesLink())
+    // testList.add(testStudsDropdownForLeaderLink())
+    // testList.add(testStudsDropdownClubsLink())
+    // testList.add(testFacultiesDropdownIktLink())
+    // testList.add(testFacultiesDropdownFtmiLink())
+    // testList.add(testIktAboutUsSidebarLink())
+    // testList.add(testIktFilesSidebarLink())
+    // testList.add(testIktStaffSidebarLink())
+    // testList.add(testFtmiAboutUsSidebarLink())
+    // testList.add(testFtmiStaffSidebarLink())
+    // testList.add(testStaffSlider())
+    //testList.add(testFooterStaffLink())
+    //testList.add(testFooterAchievementsLink())
+    //testList.add(testFooterNewsLink())
+    //testList.add(testFooterProjectsLink())
+    testList.add(testFooterFilesLink())
+    // testList.add(testFooterMediaLink())
+    testList.add(testFooterInformationLink())
+    testList.add(testFooterPartnersLink())
 
     val reporter = HtmlReportGenerator()
     val writer = FileWriter("report.html")
     reporter.generateReport(testList)?.render(writer)
 
-    // for(test in testList) {
-    //     println(test.runTest().message);
-    // }
+    for(test in testList) {
+        println(test.runTest().message)
+    }
 }
 
 private const val PageHeaderXPath: String = "//h2[contains(@class, 'page-header')]"
@@ -267,4 +277,143 @@ fun testFtmiStaffSidebarLink(): TestCase {
 fun testStaffSlider(): TestCase {
     val testCaseCreator = ClickSliderTestCaseCreator("testStaffSlider")
     return testCaseCreator.testCase
+}
+
+fun testFooterStaffLink(): TestCase {
+    val testCase = TestCase("Нажатие на ссылку состав в footer", "testStaffLink", FooterLinkClickPreset(FooterLink.Staff))
+
+    testCase.addExpectation(TitleShould(
+            "содержать \"Состав Совет обучающихся Совет обучающихся университета ИТМО\""
+    ) { it.contains("Состав Совет обучающихся Совет обучающихся университета ИТМО", true) })
+
+    testCase.addExpectation(ElementShouldExist(ElementByXpath(PageHeaderXPath)))
+    testCase.addExpectation(ElementShould(
+            "содержать слово Состав",
+            ElementByXpath(PageHeaderXPath)
+    ) { it.text == "Состав" })
+
+    testCase.addExpectation(ElementShouldExist(ElementByXpath(PageH4SubheaderXPath)))
+    testCase.addExpectation(ElementShould(
+            "содержать \"Совет обучающихся\"",
+            ElementByXpath(PageH4SubheaderXPath)
+    ) { it.text.contains("Совет обучающихся", true) })
+
+    return testCase
+}
+
+fun testFooterAchievementsLink(): TestCase {
+    val testCase = TestCase("Нажатие на ссылку Достижения в footer", "testNavbarAchievementsLink", FooterLinkClickPreset(FooterLink.Achievements))
+
+    testCase.addExpectation(TitleShould(
+            "содержать \"Совет обучающихся университета ИТМО\""
+    ) { it.contains("Совет обучающихся университета ИТМО", true) })
+
+    testCase.addExpectation(ElementShouldExist(ElementByXpath(PageHeaderXPath)))
+    testCase.addExpectation(ElementShould(
+            "содержать слово Достижения",
+            ElementByXpath(PageHeaderXPath)
+    ) { it.text == "Достижения" })
+
+    return testCase
+}
+
+fun testFooterNewsLink(): TestCase {
+    val testCase = TestCase("Нажатие на ссылку новости в footer","testNavbarNewsLink",  FooterLinkClickPreset(FooterLink.News))
+
+    testCase.addExpectation(TitleShould(
+            "содержать \"Новости Совет обучающихся Университета ИТМО\""
+    ) { it.contains("Новости Совет обучающихся Университета ИТМО" , true) })
+
+    testCase.addExpectation(ElementShouldExist(ElementByXpath(PageH3SubheaderXPath)))
+    testCase.addExpectation(ElementShould(
+            "содержать \"Новости\"",
+            ElementByXpath(PageH3SubheaderXPath)
+    ) { it.text.contains("Новости", true) })
+
+    return testCase
+}
+
+fun testFooterProjectsLink(): TestCase {
+    val testCase = TestCase("Нажатие на ссылку Проекты в footer", "testNavbarProjectsLink", FooterLinkClickPreset(FooterLink.Projects))
+
+    testCase.addExpectation(TitleShould(
+            "содержать \"Проекты Совет обучающихся Университета ИТМО\""
+    ) { it.contains("Проекты Совет обучающихся Университета ИТМО" , true) })
+
+    testCase.addExpectation(ElementShould(
+            "содержать Проекты",
+            ElementByXpath(PageHeaderXPath)
+    ) { it.text.contains("Проекты", true) })
+
+    return testCase
+}
+
+fun testFooterFilesLink(): TestCase {
+    val testCase = TestCase("Нажатие на ссылку Файлы в footer", "testNavbarFilesLink", FooterLinkClickPreset(FooterLink.Files))
+
+    testCase.addExpectation(TitleShould(
+            "содержать \"Файлы Совет обучающихся Совет обучающихся Университета ИТМО\""
+    ) { it.contains("Файлы Совет обучающихся Совет обучающихся Университета ИТМО" , true) })
+
+    testCase.addExpectation(ElementShouldExist(ElementByXpath(PageHeaderXPath)))
+    testCase.addExpectation(ElementShould(
+            "содержать \"Файлы\"",
+            ElementByXpath(PageHeaderXPath)
+    ) { it.text.contains("Файлы", true) })
+
+    testCase.addExpectation(ElementShouldExist(ElementByXpath(PageH4SubheaderXPath)))
+    testCase.addExpectation(ElementShould(
+            "содержать \"Совет обучающихся\"",
+            ElementByXpath(PageH4SubheaderXPath)
+    ) { it.text.contains("Совет обучающихся", true) })
+
+    return testCase
+}
+
+fun testFooterMediaLink(): TestCase {
+    val testCase = TestCase("Нажатие на ссылку Медиа в footer", "testNavbarMediaLink", FooterLinkClickPreset(FooterLink.Media))
+
+    testCase.addExpectation(TitleShould(
+            "содержать \"Медиа Совет обучающихся Университета ИТМО\""
+    ) { it.contains("Медиа Совет обучающихся Университета ИТМО" , true) })
+
+    testCase.addExpectation(ElementShouldExist(ElementByXpath(PageH4SubheaderXPath)))
+    testCase.addExpectation(ElementShould(
+            "содержать \"Медиа\"",
+            ElementByXpath(PageH4SubheaderXPath)
+    ) { it.text.contains("Медиа", true) })
+
+    return testCase
+}
+
+fun testFooterInformationLink(): TestCase {
+    val testCase = TestCase("Нажатие на ссылку информация в footer", "testNavbarInformationLink", FooterLinkClickPreset(FooterLink.Info))
+
+    testCase.addExpectation(TitleShould(
+            "содержать \"Совет обучающихся Университета ИТМО\""
+    ) { it.contains("Совет обучающихся Университета ИТМО" , true) })
+
+    testCase.addExpectation(ElementShouldExist(ElementByXpath(PageHeaderXPath)))
+    testCase.addExpectation(ElementShould(
+            "содержать \"Полезная информация\"",
+            ElementByXpath(PageHeaderXPath)
+    ) { it.text.contains("Полезная информация", true) })
+
+    return testCase
+}
+
+fun testFooterPartnersLink(): TestCase {
+    val testCase = TestCase("Нажатие на ссылку Партнеры в footer", "testNavbarPartnersLink", FooterLinkClickPreset(FooterLink.Partners))
+
+    testCase.addExpectation(TitleShould(
+            "содержать \"Партнеры Совет обучающихся Совет обучающихся Университета ИТМО\""
+    ) { it.contains("Партнеры Совет обучающихся Совет обучающихся Университета ИТМО" , true) })
+
+    testCase.addExpectation(ElementShouldExist(ElementByXpath(PageH3SubheaderXPath)))
+    testCase.addExpectation(ElementShould(
+            "содержать \"Партнёры\"",
+            ElementByXpath(PageH3SubheaderXPath)
+    ) { it.text.contains("Партнёры", true) })
+
+    return testCase
 }
