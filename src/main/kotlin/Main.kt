@@ -13,7 +13,7 @@ import test.creators.*
 import java.io.FileWriter
 
 fun main(args: Array<String>) {
-    var testList = mutableListOf<TestCase>()
+    val testList = mutableListOf<TestCase>()
 
     // testList.add(testNavbarStaffLink())
     // testList.add(testNavbarAchievementsLink())
@@ -43,10 +43,11 @@ fun main(args: Array<String>) {
     //testList.add(testFooterAchievementsLink())
     //testList.add(testFooterNewsLink())
     //testList.add(testFooterProjectsLink())
-    testList.add(testFooterFilesLink())
+    // testList.add(testFooterFilesLink())
     // testList.add(testFooterMediaLink())
-    testList.add(testFooterInformationLink())
-    testList.add(testFooterPartnersLink())
+    // testList.add(testFooterInformationLink())
+    // testList.add(testFooterPartnersLink())
+    testList.add(testSearch())
 
     val reporter = HtmlReportGenerator()
     val writer = FileWriter("report.html")
@@ -280,7 +281,7 @@ fun testStaffSlider(): TestCase {
 }
 
 fun testFooterStaffLink(): TestCase {
-    val testCase = TestCase("Нажатие на ссылку состав в footer", "testStaffLink", FooterLinkClickPreset(FooterLink.Staff))
+    val testCase = TestCase("Нажатие на ссылку состав в footer", "testFooterStaffLink", FooterLinkClickPreset(FooterLink.Staff))
 
     testCase.addExpectation(TitleShould(
             "содержать \"Состав Совет обучающихся Совет обучающихся университета ИТМО\""
@@ -302,7 +303,7 @@ fun testFooterStaffLink(): TestCase {
 }
 
 fun testFooterAchievementsLink(): TestCase {
-    val testCase = TestCase("Нажатие на ссылку Достижения в footer", "testNavbarAchievementsLink", FooterLinkClickPreset(FooterLink.Achievements))
+    val testCase = TestCase("Нажатие на ссылку Достижения в footer", "testFooterAchievementsLink", FooterLinkClickPreset(FooterLink.Achievements))
 
     testCase.addExpectation(TitleShould(
             "содержать \"Совет обучающихся университета ИТМО\""
@@ -318,7 +319,7 @@ fun testFooterAchievementsLink(): TestCase {
 }
 
 fun testFooterNewsLink(): TestCase {
-    val testCase = TestCase("Нажатие на ссылку новости в footer","testNavbarNewsLink",  FooterLinkClickPreset(FooterLink.News))
+    val testCase = TestCase("Нажатие на ссылку новости в footer","testFooterNewsLink",  FooterLinkClickPreset(FooterLink.News))
 
     testCase.addExpectation(TitleShould(
             "содержать \"Новости Совет обучающихся Университета ИТМО\""
@@ -334,7 +335,7 @@ fun testFooterNewsLink(): TestCase {
 }
 
 fun testFooterProjectsLink(): TestCase {
-    val testCase = TestCase("Нажатие на ссылку Проекты в footer", "testNavbarProjectsLink", FooterLinkClickPreset(FooterLink.Projects))
+    val testCase = TestCase("Нажатие на ссылку Проекты в footer", "testFooterProjectsLink", FooterLinkClickPreset(FooterLink.Projects))
 
     testCase.addExpectation(TitleShould(
             "содержать \"Проекты Совет обучающихся Университета ИТМО\""
@@ -349,7 +350,7 @@ fun testFooterProjectsLink(): TestCase {
 }
 
 fun testFooterFilesLink(): TestCase {
-    val testCase = TestCase("Нажатие на ссылку Файлы в footer", "testNavbarFilesLink", FooterLinkClickPreset(FooterLink.Files))
+    val testCase = TestCase("Нажатие на ссылку Файлы в footer", "testFooterFilesLink", FooterLinkClickPreset(FooterLink.Files))
 
     testCase.addExpectation(TitleShould(
             "содержать \"Файлы Совет обучающихся Совет обучающихся Университета ИТМО\""
@@ -371,7 +372,7 @@ fun testFooterFilesLink(): TestCase {
 }
 
 fun testFooterMediaLink(): TestCase {
-    val testCase = TestCase("Нажатие на ссылку Медиа в footer", "testNavbarMediaLink", FooterLinkClickPreset(FooterLink.Media))
+    val testCase = TestCase("Нажатие на ссылку Медиа в footer", "testFooterMediaLink", FooterLinkClickPreset(FooterLink.Media))
 
     testCase.addExpectation(TitleShould(
             "содержать \"Медиа Совет обучающихся Университета ИТМО\""
@@ -387,7 +388,7 @@ fun testFooterMediaLink(): TestCase {
 }
 
 fun testFooterInformationLink(): TestCase {
-    val testCase = TestCase("Нажатие на ссылку информация в footer", "testNavbarInformationLink", FooterLinkClickPreset(FooterLink.Info))
+    val testCase = TestCase("Нажатие на ссылку информация в footer", "testFooterInformationLink", FooterLinkClickPreset(FooterLink.Info))
 
     testCase.addExpectation(TitleShould(
             "содержать \"Совет обучающихся Университета ИТМО\""
@@ -403,7 +404,7 @@ fun testFooterInformationLink(): TestCase {
 }
 
 fun testFooterPartnersLink(): TestCase {
-    val testCase = TestCase("Нажатие на ссылку Партнеры в footer", "testNavbarPartnersLink", FooterLinkClickPreset(FooterLink.Partners))
+    val testCase = TestCase("Нажатие на ссылку Партнеры в footer", "testFooterPartnersLink", FooterLinkClickPreset(FooterLink.Partners))
 
     testCase.addExpectation(TitleShould(
             "содержать \"Партнеры Совет обучающихся Совет обучающихся Университета ИТМО\""
@@ -416,4 +417,8 @@ fun testFooterPartnersLink(): TestCase {
     ) { it.text.contains("Партнёры", true) })
 
     return testCase
+}
+
+fun testSearch(): TestCase {
+    return SearchTestCaseCreator("testSearch").testCase
 }
