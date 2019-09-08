@@ -47,7 +47,9 @@ fun main(args: Array<String>) {
     // testList.add(testFooterMediaLink())
     // testList.add(testFooterInformationLink())
     // testList.add(testFooterPartnersLink())
-    testList.add(testSearch())
+    // testList.add(testSearch())
+    testList.add(testClickNextOnBottomSliderOnMainPage())
+    testList.add(testClickPrevOnBottomSliderOnMainPage())
 
     val reporter = HtmlReportGenerator()
     val writer = FileWriter("report.html")
@@ -421,4 +423,12 @@ fun testFooterPartnersLink(): TestCase {
 
 fun testSearch(): TestCase {
     return SearchTestCaseCreator("testSearch").testCase
+}
+
+fun testClickNextOnBottomSliderOnMainPage(): TestCase {
+    return BottomSliderTestCreator(BottomSliderDirection.Next, "testClickNextOnBottomSliderOnMainPage").testCase
+}
+
+fun testClickPrevOnBottomSliderOnMainPage(): TestCase {
+    return BottomSliderTestCreator(BottomSliderDirection.Previous, "testClickPrevOnBottomSliderOnMainPage").testCase
 }
