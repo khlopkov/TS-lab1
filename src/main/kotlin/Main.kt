@@ -50,7 +50,11 @@ fun main(args: Array<String>) {
     // testList.add(testSearch())
     // testList.add(testClickNextOnBottomSliderOnMainPage())
     // testList.add(testClickPrevOnBottomSliderOnMainPage())
-    testList.add(testAllNewsClick())
+    // testList.add(testAllNewsClick())
+    testList.add(testDepartmentBottomLinkClick())
+    testList.add(testForumsBottomLinkClick())
+    testList.add(testStudsUnionDevelopmentBottomLinkClick())
+    testList.add(testInfrastructureBottomLinkClick())
 
     val reporter = HtmlReportGenerator()
     val writer = FileWriter("report.html")
@@ -436,4 +440,20 @@ fun testClickPrevOnBottomSliderOnMainPage(): TestCase {
 
 fun testAllNewsClick(): TestCase {
     return AllNewsClickTestCaseCreator("testAllNewsClick").testCase
+}
+
+fun testDepartmentBottomLinkClick(): TestCase {
+    return BottomLinksTestCreator("testDepartmentBottomLinkClick", BottomLink.Department).testCase
+}
+
+fun testForumsBottomLinkClick(): TestCase {
+    return BottomLinksTestCreator("testForumsBottomLinkClick", BottomLink.Forums).testCase
+}
+
+fun testStudsUnionDevelopmentBottomLinkClick(): TestCase {
+    return BottomLinksTestCreator("testStudsUnionDevelopmentBottomLinkClick", BottomLink.StudsUnionDevelopment).testCase
+}
+
+fun testInfrastructureBottomLinkClick(): TestCase {
+    return BottomLinksTestCreator("testInfrastructureBottomLinkClick", BottomLink.Infrastructure).testCase
 }
